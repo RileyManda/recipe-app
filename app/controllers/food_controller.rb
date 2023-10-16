@@ -1,8 +1,7 @@
 class FoodController < ApplicationController
-    def index
-    end
-    def create
-        food_params = params.require(:food).permit(:name, :measurement_unit, :price, :quantity, :user_id)
-    end
-end
+  def index; end
 
+  def create
+    params.require(:food).permit(:name, :measurement_unit, :price, :quantity, :user_id)
+  end
+end
