@@ -15,4 +15,16 @@ class RecipeController < ApplicationController
     @recipe.destroy
     redirect_to recipe_path, notice: 'Recipe was successfully deleted.'
   end
+
+  def update
+  @recipe = Recipe.find(params[:id])
+  @recipe.public = recipe_params[:public] == '1'
+
+  if @recipe.save
+    redirect_to @recipe, notice: "Recipe updated successfully."
+  else
+    render :edit
+  end
+end
+
 end
