@@ -1,5 +1,5 @@
 <div align="center">
- <img src="app-logo.png" alt="logo" width="140"  height="auto" />
+ <img src="./app/assets/images/app-logo.jpeg" alt="logo" width="140"  height="auto" />
   <br/>
   <h1><b>Recipe-App</b></h1>
 
@@ -112,7 +112,7 @@ Recipe-App is a web application that allows users to add, update, and delete foo
 > Create User
 > Add Food Item
 > Create Recipe
-> View Lists: Food List | Recipe List | Shopping List 
+> View Lists: Food List | Recipe List | Shopping List
 
 
 <!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
