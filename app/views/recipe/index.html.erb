@@ -1,1 +1,11 @@
-<h2> Recipe </h2>
+<h2>Recipes</h2>
+<ul>
+  <% @recipes.each do |recipe| %>
+    <li>
+      <h3><%= recipe.name %></h3>
+      <p>Preparation Time: <%= recipe.preparation_time %> minutes</p>
+      <p>Cooking Time: <%= recipe.cooking_time %> minutes</p>
+      <p>Description: <%= recipe.description %></p>
+    </li>
+  <% end %>
+</ul>
