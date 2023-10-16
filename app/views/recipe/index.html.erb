@@ -1,13 +1,17 @@
-<h2>Recipes</h2>
-<ul>
-  <% @recipes.each do |recipe| %>
-    <li>
-      <h3><%= recipe.name %></h3>
-      <p>Preparation Time: <%= recipe.preparation_time %> minutes</p>
-      <p>Cooking Time: <%= recipe.cooking_time %> minutes</p>
-      <p>Description: <%= recipe.description %></p>
-     <%= button_to "Remove", recipe, method: :delete, data: { confirm: "Are you sure?" } %>
+<div class="row">
+  <div class="col-md-12">
+    <h2 class="mb-3">Recipes</h2>
+    <ul class="list-group">
+      <% @recipes.each do |recipe| %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            <h3><%= recipe.name %></h3>
+             <%= button_to "Remove", recipe, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
 
-    </li>
-  <% end %>
-</ul>
+          </div>
+ <p class="text-muted">Description: <%= recipe.description %></p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
