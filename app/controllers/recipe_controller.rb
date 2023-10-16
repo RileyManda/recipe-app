@@ -6,6 +6,7 @@ class RecipeController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public, :user_id)
   end
+
   def show
     @recipe = Recipe.find(params[:id])
   end
@@ -17,14 +18,13 @@ class RecipeController < ApplicationController
   end
 
   def update
-  @recipe = Recipe.find(params[:id])
-  @recipe.public = recipe_params[:public] == '1'
+    @recipe = Recipe.find(params[:id])
+    @recipe.public = recipe_params[:public] == '1'
 
-  if @recipe.save
-    redirect_to @recipe, notice: "Recipe updated successfully."
-  else
-    render :edit
+    if @recipe.save
+      redirect_to @recipe, notice: 'Recipe updated successfully.'
+    else
+      render :edit
+    end
   end
-end
-
 end
