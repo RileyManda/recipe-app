@@ -6,6 +6,7 @@
       <p>Preparation Time: <%= recipe.preparation_time %> minutes</p>
       <p>Cooking Time: <%= recipe.cooking_time %> minutes</p>
       <p>Description: <%= recipe.description %></p>
+      <%= button_to "Remove", remove_recipe_path(recipe), method: :delete, data: { confirm: "Are you sure?" } %>
     </li>
   <% end %>
 </ul>
