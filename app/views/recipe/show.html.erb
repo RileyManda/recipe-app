@@ -19,18 +19,22 @@
 
 <div class="mt-4">
   <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Food</th>
-        <th>Quantity</th>
-        <th>Value</th>
-
-         <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-
-    </tbody>
+ <thead>
+  <tr>
+    <th>Food</th>
+    <th>Quantity</th>
+    <th>Value</th>
+  </tr>
+</thead>
+<tbody>
+  <% @recipe.recipe_food.each do |recipe_food| %>
+    <tr>
+      <td><%= recipe_food.food.name %></td>
+      <td><%= recipe_food.quantity %></td>
+      <td><%= recipe_food.quantity * recipe_food.food.price %></td>
+    </tr>
+  <% end %>
+</tbody>
   </table>
   </div>
 </div>
