@@ -202,6 +202,10 @@ Example:
 - Twitter: [@rilecodez](https://twitter.com/rileycodez)
 - LinkedIn: [rileymanda](https://www.linkedin.com/in/rileymanda/)
 
+👤 **Yusuf Sholotan**
+
+- GitHub: [@yin-ka](https://github.com/yin-ka)
+- LinkedIn: [Yusuf Sholotan](https://www.linkedin.com/in/yusuf-sholotan/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
