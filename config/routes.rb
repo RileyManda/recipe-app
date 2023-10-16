@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  # config/routes.rb
-root 'foods#index'
-resources :foods, only: [:index, :new, :create]
-resources :users, only: [:index, :show, :new, :create]
-resources :recipe_foods, only: [:index, :new, :create]
-resources :recipes, only: [:index, :new, :create]
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root 'food#index'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :food, only: [:index, :new, :create] do
+    resources :recipes, only: [:index, :new, :create]
+  end
+
+  resources :users, only: [:index, :show, :new, :create]
+  resources :recipe_food, only: [:index, :new, :create]
+  resources :recipes, only: [:index, :new, :create]
 end
