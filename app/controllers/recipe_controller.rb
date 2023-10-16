@@ -6,6 +6,9 @@ class RecipeController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public, :user_id)
   end
+  def show
+    @recipe = Recipe.find(params[:id])
+  end
 
   def destroy
     @recipe = Recipe.find(params[:id])
