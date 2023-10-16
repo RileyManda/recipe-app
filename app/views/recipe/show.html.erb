@@ -5,7 +5,6 @@
     <div class="form-check form-switch">
       <%= form_for @recipe, url: recipe_path(@recipe), method: :patch do |f| %>
         <%= f.check_box :public, class: "form-check-input custom-toggle", id: "publicToggle" %>
-
         <%= f.label :public, class: "form-check-label", for: "publicToggle" do %>
           Public
         <% end %>
@@ -15,5 +14,21 @@
   </div>
   <p>Cooking Time: <%= @recipe.cooking_time %> minutes</p>
   <button class="btn btn-primary">Generate Shopping list</button>
-   <button class="btn btn-primary">Add Ingredient</button>
+  <button class="btn btn-primary">Add Ingredient</button>
+
+<div class="mt-4">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Food</th>
+        <th>Value</th>
+        <th>Quantity</th>
+         <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+  </div>
 </div>
