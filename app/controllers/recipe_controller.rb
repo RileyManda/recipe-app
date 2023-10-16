@@ -27,4 +27,8 @@ class RecipeController < ApplicationController
       render :edit
     end
   end
+  
+  def public_recipes
+  @public_recipes = Recipe.where(public: true)
+end
 end
