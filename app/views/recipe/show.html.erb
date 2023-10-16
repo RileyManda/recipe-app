@@ -1,0 +1,36 @@
+<div class="container">
+  <h1><%= @recipe.name %></h1>
+  <div class="d-flex justify-content-between">
+    <p>Preparation Time: <%= @recipe.preparation_time %> minutes</p>
+    <div class="form-check form-switch">
+    <%= form_for @recipe, url: recipe_path(@recipe), method: :patch do |f| %>
+  <%= f.check_box :public, class: "form-check-input custom-toggle", id: "publicToggle", onchange: "this.form.submit();" %>
+  <%= f.label :public, class: "form-check-label", for: "publicToggle" do %>
+    Public
+  <% end %>
+  <%= f.submit class: "btn btn-primary d-none", value: "Save" %>
+<% end %>
+
+    </div>
+  </div>
+  <p>Cooking Time: <%= @recipe.cooking_time %> minutes</p>
+  <button class="btn btn-primary">Generate Shopping list</button>
+  <button class="btn btn-primary">Add Ingredient</button>
+
+<div class="mt-4">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Value</th>
+
+         <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+  </div>
+</div>
