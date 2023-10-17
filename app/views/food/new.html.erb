@@ -1,4 +1,4 @@
-<main class="container mt-3">
+<main class="container mt-5">
   <div class="card">
     <div class="card-header">
       <div class="col-12">
@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="card-body">
-      <%= form_for @food do |f| %>
+      <%= form_for @food, url: { action: "create" } do |f| %>
         <div class="mb-3">
           <%= f.label :name %>
           <%= f.text_field :name, class: 'form-control' %>
