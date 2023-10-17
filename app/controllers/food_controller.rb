@@ -1,5 +1,4 @@
 class FoodController < ApplicationController
-
   def new
     @food = Food.new
   end
@@ -10,7 +9,7 @@ class FoodController < ApplicationController
 
   def create
     @food = Food.new(food_params)
-   @food.user = User.first 
+    @food.user = User.first
 
     if @food.save
       redirect_to food_index_path, notice: 'Ingredient was successfully created.'
