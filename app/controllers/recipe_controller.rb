@@ -7,20 +7,16 @@ class RecipeController < ApplicationController
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public, :user_id)
   end
 
-def show
-  @recipe = Recipe.find(params[:id])
-  @recipe_foods = @recipe&.recipe_food
-end
+  def show
+    @recipe = Recipe.find(params[:id])
+    @recipe_foods = @recipe&.recipe_food
+  end
 
-
-
-def destroy
-  @recipe = Recipe.find(params[:id])
-  @recipe.destroy
-  redirect_to recipe_index_path, notice: 'Recipe was successfully deleted.'
-end
-
-
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    redirect_to recipe_index_path, notice: 'Recipe was successfully deleted.'
+  end
 
   def update
     @recipe = Recipe.find(params[:id])
@@ -34,6 +30,6 @@ end
   end
 
   def public_recipes
-  @public_recipes = Recipe.where(public: true)
-end
+    @public_recipes = Recipe.where(public: true)
+  end
 end
