@@ -6,7 +6,8 @@
       </div>
     </div>
     <div class="card-body">
-      <%= form_for @food, url: { action: "create" } do |f| %>
+   <%= form_for @food, url: { action: "create" } do |f| %>
+
         <div class="mb-3">
           <%= f.label :name %>
           <%= f.text_field :name, class: 'form-control' %>

@@ -16,19 +16,24 @@
             <th>Actions</th>
           </tr>
         </thead>
-        
+
         <tbody>
-    <% @food.each do |food| %>
+ <% if @foods.present? %>
+  <tbody>
+    <% @foods.each do |food| %>
       <tr>
         <td><%= food.name %></td>
         <td><%= food.measurement_unit %></td>
         <td><%= food.price %></td>
         <td><%= food.quantity %></td>
-    
       </tr>
     <% end %>
   </tbody>
-  
+<% else %>
+  <p>No foods available.</p>
+<% end %>
+
+
       </table>
     </div>
   </div>

@@ -4,7 +4,7 @@ class FoodController < ApplicationController
   end
 
   def index
-    @food = Food.all
+    @foods = Food.all
   end
 
   def create

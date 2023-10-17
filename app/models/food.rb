@@ -1,5 +1,5 @@
 class Food < ApplicationRecord
-  self.table_name = 'food'
+  self.table_name = 'foods'
   belongs_to :user, optional: true
   has_many :recipe_foods, dependent: :destroy
 
