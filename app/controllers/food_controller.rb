@@ -8,7 +8,8 @@ class FoodController < ApplicationController
     # @food.user = current_user
 
     if @food.save
-      redirect_to food_path, notice: 'Ingredient was successfully created.'
+      redirect_to food_path(@food), notice: 'Ingredient was successfully created.'
+
     else
       redirect_to new_food_path, alert: 'Cannot create a new ingredient.'
     end
