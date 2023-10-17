@@ -15,7 +15,7 @@
   </div>
   <p>Cooking Time: <%= @recipe.cooking_time %> minutes</p>
 
-  <div class="input-group mb-3">
+<div class="input-group mb-3">
   <button class="btn btn-primary">Generate Shopping list</button>
   <select class="form-select" id="inputGroupSelect01">
     <option selected>Add Ingredient...</option>
@@ -23,7 +23,9 @@
       <option value="<%= food.id %>"><%= food.name %></option>
     <% end %>
   </select>
+  <button class="btn btn-primary">Save</button>
 </div>
+
 
 <div class="mt-4">
   <table class="table table-bordered">
