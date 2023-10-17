@@ -1,5 +1,6 @@
 class Food < ApplicationRecord
   self.table_name = 'food'
+  belongs_to :user, optional: true
   has_many :recipe_foods, dependent: :destroy
 
   validates :name, presence: true, length: { minimum: 2, maximum: 50 }, allow_blank: false
