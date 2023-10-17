@@ -16,25 +16,21 @@
             <th>Actions</th>
           </tr>
         </thead>
+        
         <tbody>
-          <% if @foods.present? %>
-            <% @foods.each do |food| %>
-              <tr>
-                <td><%= food.name %></td>
-                <td><%= food.measurement_unit %></td>
-                <td><%= food.price %></td>
-                <td>
-                  <a href="#" class="btn btn-link" data-confirm="Are you sure?">Delete</a>
-                </td>
-              </tr>
-            <% end %>
-          <% else %>
-            <tr>
-              <td colspan="4">No food items found.</td>
-            </tr>
-          <% end %>
-        </tbody>
+    <% @food.each do |food| %>
+      <tr>
+        <td><%= food.name %></td>
+        <td><%= food.measurement_unit %></td>
+        <td><%= food.price %></td>
+        <td><%= food.quantity %></td>
+    
+      </tr>
+    <% end %>
+  </tbody>
+  
       </table>
+      <%= link_to 'New Food', new_food_path, class: 'btn btn-primary' %>
     </div>
   </div>
 </main>
