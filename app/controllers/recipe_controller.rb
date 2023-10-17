@@ -17,7 +17,7 @@ end
 def destroy
   @recipe = Recipe.find(params[:id])
   @recipe.destroy
-  redirect_to '/recipe', notice: 'Recipe was successfully deleted.'
+  redirect_to recipe_index_path, notice: 'Recipe was successfully deleted.'
 end
 
 
