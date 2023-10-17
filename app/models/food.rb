@@ -1,8 +1,8 @@
 class Food < ApplicationRecord
-  self.table_name = 'food'
-  belongs_to :user
-  has_many :recipe_food
-  has_many :recipes, through: :recipe_food
+  self.table_name = 'foods'
+  belongs_to :user, class_name: 'User'
+  has_many :recipe_foods
+  has_many :recipes, through: :recipe_foods
   validates :name, presence: true
   validates :measurement_unit, presence: true
   validates :price, presence: true
