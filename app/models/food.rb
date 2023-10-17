@@ -1,7 +1,14 @@
 class Food < ApplicationRecord
-  belongs_to :user
-  validates :name, presence: true
-  validates :measurement_unit, presence: true
-  validates :price, presence: true
-  validates :quantity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  self.table_name = 'food'
+  belongs_to :user, optional: true
+  has_many :recipe_foods, dependent: :destroy
+
+  validates :name, presence: true, length: { minimum: 2, maximum: 50 }, allow_blank: false
+  validates :measurement_unit, presence: true, allow_blank: false
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :quantity, presence: true, numericality: { greater_than_or_equal_to: 0 }
+
+  def name_with_measurement_unit
+    "#{name} (#{measurement_unit})"
+  end
 end
