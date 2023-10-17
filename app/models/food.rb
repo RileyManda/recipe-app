@@ -1,4 +1,5 @@
 class Food < ApplicationRecord
+  self.table_name = 'food'
   belongs_to :user
   validates :name, presence: true
   validates :measurement_unit, presence: true
