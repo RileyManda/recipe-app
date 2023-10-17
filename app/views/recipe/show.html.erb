@@ -3,45 +3,55 @@
   <div class="d-flex justify-content-between">
     <p>Preparation Time: <%= @recipe.preparation_time %> minutes</p>
     <div class="form-check form-switch">
-      <%= form_for @recipe, url: recipe_path(@recipe), method: :patch do |f| %>
-        <%= f.check_box :public, class: "form-check-input custom-toggle", id: "publicToggle", onchange: "this.form.submit();" %>
-        <%= f.label :public, class: "form-check-label", for: "publicToggle" do %>
-          Public
-        <% end %>
-        <%= f.submit class: "btn btn-primary d-none", value: "Save" %>
-      <% end %>
+    <%= form_for @recipe, url: recipe_path(@recipe), method: :patch do |f| %>
+  <%= f.check_box :public, class: "form-check-input custom-toggle", id: "publicToggle", onchange: "this.form.submit();" %>
+  <%= f.label :public, class: "form-check-label", for: "publicToggle" do %>
+    Public
+  <% end %>
+  <%= f.submit class: "btn btn-primary d-none", value: "Save" %>
+<% end %>
+
     </div>
   </div>
   <p>Cooking Time: <%= @recipe.cooking_time %> minutes</p>
+
+  <div class="input-group mb-3">
   <button class="btn btn-primary">Generate Shopping list</button>
-  <button class="btn btn-primary" id="show-ingredient-form">Add Ingredient</button>
+  <select class="form-select" id="inputGroupSelect01">
+    <option selected>Add Ingredient...</option>
+    <% Food.all.each do |food| %>
+      <option value="<%= food.id %>"><%= food.name %></option>
+    <% end %>
+  </select>
+</div>
 
-  <div class="mt-4">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Food</th>
-          <th>Quantity</th>
-          <th>Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% if @recipe_food.present? %>
-          <% @recipe_food.each do |recipe_food| %>
-            <tr>
-              <td><%= recipe_food.food.name %></td>
-              <td><%= recipe_food.quantity %></td>
-              <td><%= recipe_food.quantity * recipe_food.food.price %></td>
-            </tr>
-          <% end %>
-        <% else %>
-          <tr>
-            <td colspan="3">No ingredients available for this recipe.</td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+<div class="mt-4">
+  <table class="table table-bordered">
+ <thead>
+  <tr>
+    <th>Food</th>
+    <th>Quantity</th>
+    <th>Value</th>
+  </tr>
+</thead>
+<tbody>
+  <% if @recipe_foods.present? %>
+    <% @recipe_foods.each do |recipe_food| %>
+      <tr>
+        <td><%= recipe_food.food.name %></td>
+        <td><%= recipe_food.quantity %></td>
+        <td><%= recipe_food.quantity * recipe_food.food.price %></td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td colspan="3">No ingredients available for this recipe.</td>
+    </tr>
+  <% end %>
+</tbody>
+
+  </table>
   </div>
+<%= link_to '< Back To All Recipes', recipe_index_path, class: 'btn small btn-primary' %>
 
-  <%= link_to 'Back To All Recipes', recipe_index_path, class: 'btn small btn-primary' %>
 </div>
