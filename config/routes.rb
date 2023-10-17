@@ -12,4 +12,8 @@ Rails.application.routes.draw do
   resources :recipe_food, only: [:create]
   get '/public_recipes', to: 'recipe#public_recipes', as: 'public_recipes'
   post 'recipe/:recipe_id/recipe_foods', to: 'recipe_foods#create', as: 'add_ingredient_to_recipe'
+  post 'recipe_foods/create', to: 'recipe_foods#create', as: 'create_recipe_food'
+
+
+
 end

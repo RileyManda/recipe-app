@@ -15,16 +15,22 @@
   </div>
   <p>Cooking Time: <%= @recipe.cooking_time %> minutes</p>
 
-<div class="input-group mb-3">
-  <button class="btn btn-primary">Generate Shopping list</button>
-  <select class="form-select" id="inputGroupSelect01">
-    <option selected>Add Ingredient...</option>
-    <% Food.all.each do |food| %>
-      <option value="<%= food.id %>"><%= food.name %></option>
-    <% end %>
-  </select>
-  <button class="btn btn-primary">Save</button>
-</div>
+<form id="ingredient-form" method="post" action="<%= add_ingredient_to_recipe_path(@recipe) %>">
+  <div class="input-group mb-3">
+    <button class="btn btn-primary">Generate Shopping list</button>
+    <select class="form-select" name="recipe_food[food_id]">
+      <option selected>Add Ingredient...</option>
+      <% Food.all.each do |food| %>
+        <option value="<%= food.id %>"><%= food.name %></option>
+      <% end %>
+    </select>
+    <input type="number" name="recipe_food[quantity]" class="form-control" placeholder="Quantity">
+    <input type="text" name="recipe_food[value]" class="form-control" placeholder="Value">
+    <button type="submit" class="btn btn-primary">Save</button>
+  </div>
+</form>
+
+
 
 
 <div class="mt-4">

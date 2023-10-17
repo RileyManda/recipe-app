@@ -32,4 +32,23 @@ class RecipeController < ApplicationController
   def public_recipes
     @public_recipes = Recipe.where(public: true)
   end
+
+  def add_ingredient
+    @recipe = Recipe.find(params[:id])
+    @recipe_food = RecipeFood.new(recipe_food_params)
+
+    if @recipe_food.save
+      flash[:notice] = 'Ingredient added to the recipe.'
+    else
+      flash[:alert] = 'Failed to add the ingredient.'
+    end
+
+    redirect_to recipe_path(@recipe)
+  end
+
+  private
+
+  def recipe_food_params
+    params.require(:recipe_food).permit(:recipe_id, :food_id, :quantity, :value)
+  end
 end
