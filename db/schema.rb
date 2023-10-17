@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_16_123855) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_16_231457) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "food", force: :cascade do |t|
+  create_table "food", id: :bigint, default: -> { "nextval('foods_id_seq'::regclass)" }, force: :cascade do |t|
     t.string "name"
     t.string "measurement_unit"
     t.decimal "price"
@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_16_123855) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_food_on_user_id"
+    t.index ["user_id"], name: "index_foods_on_user_id"
   end
 
   create_table "recipe", force: :cascade do |t|
