@@ -9,12 +9,13 @@ class RecipeController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @recipe_foods = @recipe&.recipe_foods
   end
 
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
-    redirect_to recipe_path, notice: 'Recipe was successfully deleted.'
+    redirect_to recipe_index_path, notice: 'Recipe was successfully deleted.'
   end
 
   def update
@@ -26,5 +27,9 @@ class RecipeController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def public_recipes
+    @public_recipes = Recipe.where(public: true)
   end
 end

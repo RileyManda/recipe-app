@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="mb-3 text-center">Public Recipes</h2>
+      <ul class="list-group">
+        <% @public_recipes.each do |recipe| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div class="recipe">
+              <h2><%= recipe.name %></h2>
+              <p>By <%= recipe.user.name %></p>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

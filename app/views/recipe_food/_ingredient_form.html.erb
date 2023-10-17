@@ -1,0 +1,15 @@
+<%= form_for RecipeFood.new, url: recipe_food_path do |f| %>
+  <div class="form-group">
+    <%= f.label :food_id %>
+    <%= f.collection_select :food_id, Food.all, :id, :name, prompt: 'Select a Food Item', class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Add Ingredient', class: 'btn btn-primary' %>
+  </div>
+<% end %>
