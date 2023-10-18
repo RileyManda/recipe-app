@@ -10,6 +10,7 @@ class RecipeController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @recipe_foods = @recipe.recipe_foods
+    @recipe_food = RecipeFood.new
   end
 
   def destroy
@@ -33,22 +34,24 @@ class RecipeController < ApplicationController
     @public_recipes = Recipe.where(public: true)
   end
 
-  def add_ingredient
-    @recipe = Recipe.find(params[:id])
-    @recipe_food = RecipeFood.new(recipe_food_params)
+def add_ingredient
+  @recipe = Recipe.find(params[:id])
+  @recipe_food = @recipe.recipe_foods.build(recipe_food_params)
 
-    if @recipe_food.save
-      flash[:notice] = 'Ingredient added to the recipe.'
-    else
-      flash[:alert] = 'Failed to add the ingredient.'
-    end
-
-    redirect_to recipe_path(@recipe)
+  if @recipe_food.save
+    @show_ingredient_form = true
+    flash[:notice] = 'Ingredient added successfully.'
+    render :show
+  else
+    flash[:alert] = 'Failed to add the ingredient.'
+    render :show
   end
+end
+
 
   private
 
   def recipe_food_params
-    params.require(:recipe_food).permit(:recipe_id, :food_id, :quantity, :value)
+    params.require(:recipe).require(:recipe_foods_attributes).permit(:food_id, :quantity, :value)
   end
 end

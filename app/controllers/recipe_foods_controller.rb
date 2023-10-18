@@ -1,28 +1,45 @@
 class RecipeFoodsController < ApplicationController
-  def index
-    @recipe_food = RecipeFood.all
-  end
+  skip_before_action :verify_authenticity_token, only: :create
+  before_action :set_recipe
+
+ def new
+  @recipe = Recipe.find(params[:recipe_id])
+  @recipe_food = RecipeFood.new
+end
+
 
   def show
     @recipe_food = RecipeFood.find(params[:id])
   end
 
   def create
-    @recipe_food = RecipeFood.new(recipe_food_params)
+    @recipe_food = @recipe.recipe_foods.build(recipe_food_params)
 
     if @recipe_food.save
-      flash[:notice] = 'Ingredient added to the recipe.'
+      redirect_to recipe_path(@recipe), notice: 'Ingredient was successfully added.'
     else
-      flash[:alert] = 'Failed to add the ingredient.'
+      render :new
     end
+  end
 
-    # Redirect to the recipe show page
-    redirect_to recipe_path(@recipe_food.recipe)
+  def destroy
+    @recipe_food = RecipeFood.find(params[:id])
+    if @recipe_food.destroy
+      redirect_to recipe_path(@recipe), notice: 'Ingredient was successfully removed.'
+    else
+      redirect_to recipe_path(@recipe), alert: 'Failed to remove the ingredient.'
+    end
   end
 
   private
 
+def set_recipe
+  @recipe = Recipe.find(params[:recipe_id])
+end
+
+
+
   def recipe_food_params
-    params.require(:recipe_food).permit(:recipe_id, :food_id, :quantity, :value)
+    params.require(:recipe_food).permit(:food_id, :quantity)
   end
 end

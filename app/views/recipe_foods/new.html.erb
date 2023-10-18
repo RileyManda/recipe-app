@@ -1,0 +1,20 @@
+<%= form_for @recipe_food, url: recipe_foods_path(recipe_id: @recipe.id), method: :post do |f| %>
+  <div class="field">
+    <%= f.label :food_id %>
+    <%= f.collection_select(:food_id, Food.all, :id, :name, prompt: 'Select an ingredient') %>
+  </div>
+
+  <div class="field">
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity, placeholder: 'Quantity' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :value %>
+    <%= f.number_field :value, placeholder: 'Value' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Add Ingredient', class: 'btn btn-primary' %>
+  </div>
+<% end %>

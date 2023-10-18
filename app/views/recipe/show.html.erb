@@ -3,63 +3,68 @@
   <div class="d-flex justify-content-between">
     <p>Preparation Time: <%= @recipe.preparation_time %> minutes</p>
     <div class="form-check form-switch">
-    <%= form_for @recipe, url: recipe_path(@recipe), method: :patch do |f| %>
-  <%= f.check_box :public, class: "form-check-input custom-toggle", id: "publicToggle", onchange: "this.form.submit();" %>
-  <%= f.label :public, class: "form-check-label", for: "publicToggle" do %>
-    Public
-  <% end %>
-  <%= f.submit class: "btn btn-primary d-none", value: "Save" %>
-<% end %>
-
+      <%= form_for @recipe, url: recipe_path(@recipe), method: :patch do |f| %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <%= f.check_box :public, class: "form-check-input custom-toggle", id: "publicToggle", onchange: "this.form.submit();" %>
+        <%= f.label :public, class: "form-check-label", for: "publicToggle" do %>
+          Public
+        <% end %>
+        <%= f.submit class: "btn btn-primary d-none", value: "Save" %>
+      <% end %>
     </div>
   </div>
   <p>Cooking Time: <%= @recipe.cooking_time %> minutes</p>
+  <button> Generate Shopping List </button>
+    <div class="col-md-6">
 
-<form id="ingredient-form" method="post" action="<%= add_ingredient_to_recipe_path(@recipe) %>">
-  <div class="input-group mb-3">
-    <button class="btn btn-primary">Generate Shopping list</button>
-    <select class="form-select" name="recipe_food[food_id]">
-      <option selected>Add Ingredient...</option>
-      <% Food.all.each do |food| %>
-        <option value="<%= food.id %>"><%= food.name %></option>
-      <% end %>
-    </select>
-    <input type="number" name="recipe_food[quantity]" class="form-control" placeholder="Quantity">
-    <input type="text" name="recipe_food[value]" class="form-control" placeholder="Value">
-    <button type="submit" class="btn btn-primary">Save</button>
+       <%= link_to "Add Ingredient", new_recipe_food_path(recipe_id: @recipe.id), class: 'btn btn-primary btn-block' %>
+
+
+    </div>
+
+
+
+
+  <div class="mt-4">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Food</th>
+          <th>Quantity</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @recipe_foods.present? %>
+          <% @recipe_foods.each do |recipe_food| %>
+            <tr>
+              <td><%= recipe_food.food.name %></td>
+              <td><%= recipe_food.quantity %></td>
+              <td><%= recipe_food.quantity * recipe_food.food.price %></td>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td colspan="3">No ingredients available for this recipe.</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
-</form>
-
-
-
-
-<div class="mt-4">
-  <table class="table table-bordered">
- <thead>
-  <tr>
-    <th>Food</th>
-    <th>Quantity</th>
-    <th>Value</th>
-  </tr>
-</thead>
-<tbody>
-  <% if @recipe_foods.present? %>
-    <% @recipe_foods.each do |recipe_food| %>
-      <tr>
-        <td><%= recipe_food.food.name %></td>
-        <td><%= recipe_food.quantity %></td>
-        <td><%= recipe_food.quantity * recipe_food.food.price %></td>
-      </tr>
-    <% end %>
-  <% else %>
-    <tr>
-      <td colspan="3">No ingredients available for this recipe.</td>
-    </tr>
-  <% end %>
-</tbody>
-
-  </table>
-  </div>
-<%= link_to '< Back To All Recipes', recipe_index_path, class: 'btn small btn-primary' %>
-
+  <%= link_to '< Back To All Recipes', recipe_index_path, class: 'btn small btn-primary' %>
 </div>
+
+<%
+=begin%>
+ <script>
+  function toggleIngredientForm() {
+    var ingredientForm = document.getElementById("ingredient-form");
+    if (ingredientForm.style.display === "none" || ingredientForm.style.display === "") {
+      ingredientForm.style.display = "block";
+    } else {
+      ingredientForm.style.display = "none";
+    }
+  }
+</script>
+<%
+=end%>
