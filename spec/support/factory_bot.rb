@@ -1,10 +1,6 @@
 FactoryBot.define do
-  factory :food do
-    name { 'Brocolli' }
-    measurement_unit { 'g' }
-    price { 0.7 }
-    quantity { 1000 }
-    user
+  factory :recipe_food do
+    quantity { 500 }
   end
 end
 
@@ -13,7 +9,16 @@ FactoryBot.define do
     name { 'Riley' }
     email { 'riley@example.com' }
     password { 'password123' }
-    food
+  end
+end
+
+FactoryBot.define do
+  factory :food do
+    name { 'Broccoli' }
+    measurement_unit { 'g' }
+    price { 0.7 }
+    quantity { 1000 }
+    user
   end
 end
 
@@ -22,16 +27,8 @@ FactoryBot.define do
     name { 'Vegetable Soup' }
     preparation_time { 10 }
     cooking_time { 20 }
-    description { 'A delicious chicken curry' }
+    description { 'A delicious vegetable soup' }
     public { true }
     user
-  end
-end
-
-FactoryBot.define do
-  factory :recipe_food do
-    quantity { 500 }
-    recipe
-    food
   end
 end
