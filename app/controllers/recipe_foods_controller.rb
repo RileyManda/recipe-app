@@ -11,25 +11,19 @@ class RecipeFoodsController < ApplicationController
     @recipe_food = RecipeFood.find(params[:id])
   end
 
-def create
-  @recipe = Recipe.find(params[:recipe_id])
-  @recipe_food = @recipe.recipe_foods.build(recipe_food_params)
-  selected_food = Food.find(recipe_food_params[:food_id])
-  @recipe_food.food = selected_food
+  def create
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_food = @recipe.recipe_foods.build(recipe_food_params)
+    selected_food = Food.find(recipe_food_params[:food_id])
+    @recipe_food.food = selected_food
 
-  if @recipe_food.save
-    redirect_to recipe_path(@recipe), notice: 'Ingredient was successfully added.'
-  else
-    puts @recipe_food.errors.full_messages
-    render :new
+    if @recipe_food.save
+      redirect_to recipe_path(@recipe), notice: 'Ingredient was successfully added.'
+    else
+      puts @recipe_food.errors.full_messages
+      render :new
+    end
   end
-end
-
-
-
-
-
-
 
   def destroy
     @recipe_food = RecipeFood.find(params[:id])
@@ -46,8 +40,7 @@ end
     @recipe = Recipe.find(params[:recipe_id])
   end
 
-def recipe_food_params
-  params.require(:recipe_food).permit(:food_id, :quantity, :value, :recipe_id)
-end
-
+  def recipe_food_params
+    params.require(:recipe_food).permit(:food_id, :quantity, :value, :recipe_id)
+  end
 end

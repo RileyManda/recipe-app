@@ -16,15 +16,8 @@
   <p>Cooking Time: <%= @recipe.cooking_time %> minutes</p>
   <button> Generate Shopping List </button>
     <div class="col-md-6">
-
        <%= link_to "Add Ingredient", new_recipe_food_path(recipe_id: @recipe.id), class: 'btn btn-primary btn-block' %>
-
-
     </div>
-
-
-
-
   <div class="mt-4">
     <table class="table table-bordered">
       <thead>
@@ -41,14 +34,7 @@
         <td><%= recipe_food.food.name %></td>
         <td><%= recipe_food.quantity %></td>
         <td><%= recipe_food.quantity * recipe_food.food.price %></td>
-        <%
-=begin%>
- <td class="actions">
-          <%= link_to 'Modify', edit_recipe_food_path(recipe_food), class: 'btn btn-primary' %>
-          <%= link_to 'Delete', recipe_food_path(recipe_food), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-        </td>
-<%
-=end%>
+
       </tr>
     <% end %>
   <% else %>
@@ -63,17 +49,3 @@
   <%= link_to '< Back To All Recipes', recipe_index_path, class: 'btn small btn-primary' %>
 </div>
 
-<%
-=begin%>
- <script>
-  function toggleIngredientForm() {
-    var ingredientForm = document.getElementById("ingredient-form");
-    if (ingredientForm.style.display === "none" || ingredientForm.style.display === "") {
-      ingredientForm.style.display = "block";
-    } else {
-      ingredientForm.style.display = "none";
-    }
-  }
-</script>
-<%
-=end%>

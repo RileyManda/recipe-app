@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :recipe, only: [:index, :new, :create, :show, :update, :destroy] do
     resources :recipe_foods, only: [:new, :create]
+    post 'create_recipe', to: 'recipe#create', on: :new, as: 'create_recipe'
+    get 'new_recipe', to: 'recipe#new', on: :new, as: 'new_recipe'
   end
 
   delete 'recipe/:id', to: 'recipe#destroy', as: 'remove_recipe'
