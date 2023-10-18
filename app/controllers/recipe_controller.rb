@@ -3,9 +3,9 @@ class RecipeController < ApplicationController
     @recipes = Recipe.all
   end
 
-def new
-  @recipe = Recipe.new
-end
+  def new
+    @recipe = Recipe.new
+  end
 
   def create
     @recipe = Recipe.new(recipe_params)
@@ -16,6 +16,7 @@ end
       render :new
     end
   end
+
   def recipe_params
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public, :user_id)
   end
