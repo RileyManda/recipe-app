@@ -34,21 +34,30 @@
           <th>Value</th>
         </tr>
       </thead>
-      <tbody>
-        <% if @recipe_foods.present? %>
-          <% @recipe_foods.each do |recipe_food| %>
-            <tr>
-              <td><%= recipe_food.food.name %></td>
-              <td><%= recipe_food.quantity %></td>
-              <td><%= recipe_food.quantity * recipe_food.food.price %></td>
-            </tr>
-          <% end %>
-        <% else %>
-          <tr>
-            <td colspan="3">No ingredients available for this recipe.</td>
-          </tr>
-        <% end %>
-      </tbody>
+     <tbody>
+  <% if @recipe_foods.present? %>
+    <% @recipe_foods.each do |recipe_food| %>
+      <tr>
+        <td><%= recipe_food.food.name %></td>
+        <td><%= recipe_food.quantity %></td>
+        <td><%= recipe_food.quantity * recipe_food.food.price %></td>
+        <%
+=begin%>
+ <td class="actions">
+          <%= link_to 'Modify', edit_recipe_food_path(recipe_food), class: 'btn btn-primary' %>
+          <%= link_to 'Delete', recipe_food_path(recipe_food), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </td>
+<%
+=end%>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td colspan="4">No ingredients available for this recipe.</td>
+    </tr>
+  <% end %>
+</tbody>
+
     </table>
   </div>
   <%= link_to '< Back To All Recipes', recipe_index_path, class: 'btn small btn-primary' %>
