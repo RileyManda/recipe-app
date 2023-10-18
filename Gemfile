@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.2.2'
 gem 'bootstrap', '~> 5.3'
 gem 'cancancan'
-gem 'devise', '~> 4.9'
+gem 'devise'
 gem 'rspec-rails'
 gem 'rubocop', '>= 1.0', '< 2.0'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

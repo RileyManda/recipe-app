@@ -4,6 +4,7 @@
     <p>Preparation Time: <%= @recipe.preparation_time %> minutes</p>
     <div class="form-check form-switch">
       <%= form_for @recipe, url: recipe_path(@recipe), method: :patch do |f| %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <%= f.check_box :public, class: "form-check-input custom-toggle", id: "publicToggle", onchange: "this.form.submit();" %>
         <%= f.label :public, class: "form-check-label", for: "publicToggle" do %>
           Public
@@ -13,9 +14,10 @@
     </div>
   </div>
   <p>Cooking Time: <%= @recipe.cooking_time %> minutes</p>
-  <button class="btn btn-primary">Generate Shopping list</button>
-  <button class="btn btn-primary" id="show-ingredient-form">Add Ingredient</button>
-
+  <button> Generate Shopping List </button>
+    <div class="col-md-6">
+       <%= link_to "Add Ingredient", new_recipe_food_path(recipe_id: @recipe.id), class: 'btn btn-primary btn-block' %>
+    </div>
   <div class="mt-4">
     <table class="table table-bordered">
       <thead>
@@ -25,23 +27,25 @@
           <th>Value</th>
         </tr>
       </thead>
-      <tbody>
-        <% if @recipe_food.present? %>
-          <% @recipe_food.each do |recipe_food| %>
-            <tr>
-              <td><%= recipe_food.food.name %></td>
-              <td><%= recipe_food.quantity %></td>
-              <td><%= recipe_food.quantity * recipe_food.food.price %></td>
-            </tr>
-          <% end %>
-        <% else %>
-          <tr>
-            <td colspan="3">No ingredients available for this recipe.</td>
-          </tr>
-        <% end %>
-      </tbody>
+     <tbody>
+  <% if @recipe_foods.present? %>
+    <% @recipe_foods.each do |recipe_food| %>
+      <tr>
+        <td><%= recipe_food.food.name %></td>
+        <td><%= recipe_food.quantity %></td>
+        <td><%= recipe_food.quantity * recipe_food.food.price %></td>
+
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td colspan="4">No ingredients available for this recipe.</td>
+    </tr>
+  <% end %>
+</tbody>
+
     </table>
   </div>
-
-  <%= link_to 'Back To All Recipes', recipe_index_path, class: 'btn small btn-primary' %>
+  <%= link_to '< Back To All Recipes', recipe_index_path, class: 'btn small btn-primary' %>
 </div>
+
