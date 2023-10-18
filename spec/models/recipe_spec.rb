@@ -30,5 +30,30 @@ RSpec.describe Recipe, type: :model do
       )
       expect(recipe).not_to be_valid
     end
+    it 'is not valid with a negative preparation time' do
+      user = User.create(name: 'johndoes', email: 'john@email.com', password: '123456')
+      recipe = Recipe.new(
+        name: 'Sample Recipe',
+        preparation_time: -5,
+        cooking_time: 60,
+        description: 'Recipe description',
+        public: true,
+        user:
+      )
+      expect(recipe).not_to be_valid
+    end
+
+    it 'is not valid with a negative cooking time' do
+      user = User.create(name: 'johndoes', email: 'john@email.com', password: '123456')
+      recipe = Recipe.new(
+        name: 'Sample Recipe',
+        preparation_time: 30,
+        cooking_time: -10,
+        description: 'Recipe description',
+        public: true,
+        user:
+      )
+      expect(recipe).not_to be_valid
+    end
   end
 end
