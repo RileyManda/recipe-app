@@ -2,11 +2,10 @@ class RecipeFoodsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create
   before_action :set_recipe
 
- def new
-  @recipe = Recipe.find(params[:recipe_id])
-  @recipe_food = RecipeFood.new
-end
-
+  def new
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_food = RecipeFood.new
+  end
 
   def show
     @recipe_food = RecipeFood.find(params[:id])
@@ -33,11 +32,9 @@ end
 
   private
 
-def set_recipe
-  @recipe = Recipe.find(params[:recipe_id])
-end
-
-
+  def set_recipe
+    @recipe = Recipe.find(params[:recipe_id])
+  end
 
   def recipe_food_params
     params.require(:recipe_food).permit(:food_id, :quantity)

@@ -34,20 +34,18 @@ class RecipeController < ApplicationController
     @public_recipes = Recipe.where(public: true)
   end
 
-def add_ingredient
-  @recipe = Recipe.find(params[:id])
-  @recipe_food = @recipe.recipe_foods.build(recipe_food_params)
+  def add_ingredient
+    @recipe = Recipe.find(params[:id])
+    @recipe_food = @recipe.recipe_foods.build(recipe_food_params)
 
-  if @recipe_food.save
-    @show_ingredient_form = true
-    flash[:notice] = 'Ingredient added successfully.'
-    render :show
-  else
-    flash[:alert] = 'Failed to add the ingredient.'
+    if @recipe_food.save
+      @show_ingredient_form = true
+      flash[:notice] = 'Ingredient added successfully.'
+    else
+      flash[:alert] = 'Failed to add the ingredient.'
+    end
     render :show
   end
-end
-
 
   private
 
