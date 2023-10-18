@@ -1,5 +1,4 @@
 <h1>Create a New Recipe</h1>
-
 <%= form_for @recipe, url: new_recipe_path, method: :post do |f| %>
   <div class="field">
     <%= f.label :name %>
@@ -11,7 +10,7 @@
     <%= f.number_field :preparation_time %>
   </div>
 
-  <div class "field">
+  <div class="field">
     <%= f.label :cooking_time %>
     <%= f.number_field :cooking_time %>
   </div>
