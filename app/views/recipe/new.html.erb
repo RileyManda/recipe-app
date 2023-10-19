@@ -1,35 +1,32 @@
+<div class="container">
 <%= form_for @recipe, url: new_recipe_path, method: :post do |f| %>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <%= f.object.errors.full_messages_for(:name).join(', ') if f.object.errors.include?(:name) %>
+  <div class="mb-3">
+    <%= f.label :name, class: "form-label" %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :preparation_time %>
-    <%= f.number_field :preparation_time %>
-    <%= f.object.errors.full_messages_for(:preparation_time).join(', ') if f.object.errors.include?(:preparation_time) %>
+  <div class="mb-3">
+    <%= f.label :preparation_time, class: "form-label" %>
+    <%= f.number_field :preparation_time, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :cooking_time %>
-    <%= f.number_field :cooking_time %>
-    <%= f.object.errors.full_messages_for(:cooking_time).join(', ') if f.object.errors.include?(:cooking_time) %>
+  <div class="mb-3">
+    <%= f.label :cooking_time, class: "form-label" %>
+    <%= f.number_field :cooking_time, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-    <%= f.object.errors.full_messages_for(:description).join(', ') if f.object.errors.include?(:description) %>
+  <div class="mb-3">
+    <%= f.label :description, class: "form-label" %>
+    <%= f.text_area :description, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :public %>
-    <%= f.check_box :public %>
-    <%= f.object.errors.full_messages_for(:public).join(', ') if f.object.errors.include?(:public) %>
+  <div class="mb-3 form-check">
+    <%= f.check_box :public, class: "form-check-input" %>
+    <%= f.label :public, class: "form-check-label" %>
   </div>
 
-  <div class="actions">
+  <div class="text-center">
     <%= f.submit 'Create Recipe', class: 'btn btn-primary' %>
   </div>
 <% end %>
+</div>
