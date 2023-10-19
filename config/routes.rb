@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :recipe, only: [:index, :new, :create, :show, :update, :destroy] do
-    resources :recipe_foods, only: [:new, :create]
+    resources :recipe_foods, only: [:new, :create, :destroy]
     post '', to: 'recipe#create', on: :new, as: 'create_recipe'
     get 'new_recipe', to: 'recipe#new', on: :new, as: 'new_recipe'
   end

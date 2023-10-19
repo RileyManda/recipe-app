@@ -25,6 +25,7 @@
           <th>Food</th>
           <th>Quantity</th>
           <th>Value</th>
+           <th>Actions</th>
         </tr>
       </thead>
      <tbody>
@@ -34,7 +35,11 @@
         <td><%= recipe_food.food.name %></td>
         <td><%= recipe_food.quantity %></td>
         <td><%= recipe_food.quantity * recipe_food.food.price %></td>
-
+        <td>
+<%= form_for([@recipe, recipe_food], method: :delete, html: { data: { confirm: 'Are you sure you want to delete this ingredient?' } }) do |f| %>
+  <%= f.submit 'Delete', class: 'btn btn-danger btn-sm' %>
+<% end %>
+</td>
       </tr>
     <% end %>
   <% else %>

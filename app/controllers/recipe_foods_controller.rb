@@ -1,6 +1,8 @@
 class RecipeFoodsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create
   before_action :set_recipe
+   def index
+   end
 
   def new
     @recipe = Recipe.find(params[:recipe_id])
@@ -25,14 +27,15 @@ class RecipeFoodsController < ApplicationController
     end
   end
 
-  def destroy
-    @recipe_food = RecipeFood.find(params[:id])
-    if @recipe_food.destroy
-      redirect_to recipe_path(@recipe), notice: 'Ingredient was successfully removed.'
-    else
-      redirect_to recipe_path(@recipe), alert: 'Failed to remove the ingredient.'
-    end
+def destroy
+  @recipe_food = RecipeFood.find(params[:id])
+  if @recipe_food.destroy
+    redirect_to recipe_path(@recipe), notice: 'Ingredient was successfully removed.'
+  else
+    redirect_to recipe_path(@recipe), alert: 'Failed to remove the ingredient.'
   end
+end
+
 
   private
 
