@@ -1,4 +1,5 @@
 class FoodController < ApplicationController
+  load_and_authorize_resource
   def new
     @food = Food.new
   end
@@ -27,7 +28,7 @@ class FoodController < ApplicationController
     @food = Food.find(params[:id])
     @food.destroy
 
-    redirect_to food_path, notice: 'Food successfully deleted.'
+    redirect_to food_index_path, notice: 'Food successfully deleted.'
   end
 
   private
