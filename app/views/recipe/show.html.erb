@@ -14,9 +14,10 @@
     </div>
   </div>
   <p>Cooking Time: <%= @recipe.cooking_time %> minutes</p>
-  <button> Generate Shopping List </button>
+
   <div class="col-md-6">
-    <%= link_to "Add Ingredient", new_recipe_food_path(recipe_id: @recipe.id), class: 'btn btn-primary btn-block' %>
+     <%= link_to "Generate Shopping list", new_recipe_food_path(recipe_id: @recipe.id), class: 'btn btn-primary btn-sm' %>
+    <%= link_to "Add Ingredient", new_recipe_food_path(recipe_id: @recipe.id), class: 'btn btn-primary btn-sm' %>
   </div>
   <div class="mt-4">
     <table class="table table-bordered">
@@ -53,5 +54,4 @@
       </tbody>
     </table>
   </div>
-  <%= link_to '< Back To All Recipes', recipe_index_path, class: 'btn small btn-primary' %>
 </div>

@@ -2,17 +2,18 @@
   <div class="row">
     <div class="col-md-12">
       <h2 class="mb-3 text-center">Public Recipes</h2>
+
       <ul class="list-group">
         <% @public_recipes.each do |recipe| %>
           <li class="list-group-item d-flex justify-content-between align-items-center">
             <div class="recipe">
               <h2><%= recipe.name %></h2>
-              <p>By <%= recipe.user.name %></p>
-              <p>Total food items: <%= recipe.recipe_foods.length %></p>
-              <p class="card-text">Total price:
-  <%= recipe.recipe_foods.joins(:food).sum('recipe_foods.quantity * foods.price') %>
-</p>
+              <p>By <%= recipe.user.email %></p>
 
+            </div>
+            <div class="text-end">
+              <p>Total food items: <%= recipe.recipe_foods.length %></p>
+              <p class="card-text">Total price: <%= number_to_currency(recipe.recipe_foods.joins(:food).sum('recipe_foods.quantity * foods.price')) %></p>
             </div>
           </li>
         <% end %>
