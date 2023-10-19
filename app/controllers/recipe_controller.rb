@@ -52,10 +52,9 @@ class RecipeController < ApplicationController
     end
   end
 
-def public_recipes
-  @public_recipes = Recipe.includes(:user, :recipe_foods).where(public: true)
-end
-
+  def public_recipes
+    @public_recipes = Recipe.includes(:user, :recipe_foods).where(public: true)
+  end
 
   def add_ingredient
     @recipe = Recipe.find(params[:id])
