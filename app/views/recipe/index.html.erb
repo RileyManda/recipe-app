@@ -11,7 +11,6 @@
             <% if can? :manage, recipe %>
   <%= button_to "Remove", recipe, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
 <% end %>
-
             </div>
             <p class="text-muted"><%= recipe.description %></p>
 
