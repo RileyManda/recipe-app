@@ -1,0 +1,44 @@
+<div class="container">
+  <h1>Shopping List</h1>
+  <div class="d-flex justify-content-between">
+    <p>Amount of food to buy:</p>
+
+    <div>
+     Recipe: Recipe2Link
+    </div>
+
+  </div>
+      <p>Total value of of food needed:</p>
+       <div>
+     Inventory: Inventory1
+    </div>
+  <div class="mt-4">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Food</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @recipe_foods.present? %>
+          <% @recipe_foods.each do |recipe_food| %>
+            <tr>
+              <td><%= recipe_food.food.name %></td>
+              <td><%= recipe_food.quantity %>g</td>
+              <td>$<%= recipe_food.quantity * recipe_food.food.price %></td>
+              <td>
+              </td>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td colspan="4">No shopping list available.</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= link_to '< Back To All Recipes', recipe_index_path, class: 'btn small btn-primary' %>
+</div>

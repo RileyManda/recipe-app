@@ -1,7 +1,7 @@
 <div class="container">
   <h1><%= @recipe.name %></h1>
   <div class="d-flex justify-content-between">
-    <p>Preparation Time: <%= @recipe.preparation_time %> minutes</p>
+    <p>Preparation Time: <%= @recipe.preparation_time %> hours</p>
     <div class="form-check form-switch">
       <%= form_for @recipe, url: recipe_path(@recipe), method: :patch do |f| %>
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
