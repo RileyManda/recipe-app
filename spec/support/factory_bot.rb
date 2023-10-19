@@ -32,3 +32,14 @@ FactoryBot.define do
     user
   end
 end
+
+FactoryBot.define do
+  factory :public_recipe, class: 'Recipe' do
+    name { 'Public Recipe' }
+    preparation_time { 15 }
+    cooking_time { 25 }
+    description { 'A public recipe' }
+    public { true }
+    user
+  end
+end
