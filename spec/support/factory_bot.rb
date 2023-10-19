@@ -15,9 +15,9 @@ end
 FactoryBot.define do
   factory :food do
     name { 'Broccoli' }
-    measurement_unit { 'grams' }
-    price { 500 }
-    quantity { 10 }
+    measurement_unit { 'g' }
+    price { 0.7 }
+    quantity { 1000 }
     user
   end
 end
