@@ -1,6 +1,7 @@
 class RecipeFoodsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create
   before_action :set_recipe
+  def index; end
 
   def new
     @recipe = Recipe.find(params[:recipe_id])

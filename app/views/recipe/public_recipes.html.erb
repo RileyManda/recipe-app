@@ -8,6 +8,11 @@
             <div class="recipe">
               <h2><%= recipe.name %></h2>
               <p>By <%= recipe.user.name %></p>
+              <p>Total food items: <%= recipe.recipe_foods.length %></p>
+              <p class="card-text">Total price:
+  <%= recipe.recipe_foods.joins(:food).sum('recipe_foods.quantity * foods.price') %>
+</p>
+
             </div>
           </li>
         <% end %>
