@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   get 'shopping/index'
   root 'food#index'
   devise_for :users
+devise_scope :user do
+  delete 'sign_out', to: 'devise/sessions#destroy'
+end
 
   resources :food, only: [:index, :show, :new, :create, :destroy] do
     resources :recipe, controller: 'recipe' do
@@ -25,4 +28,6 @@ Rails.application.routes.draw do
 
   post 'recipe/:recipe_id/recipe_foods', to: 'recipe_foods#create', as: 'add_ingredient_to_recipe'
   post 'recipe_foods', to: 'recipe_foods#create', as: 'create_recipe_food'
+
+
 end

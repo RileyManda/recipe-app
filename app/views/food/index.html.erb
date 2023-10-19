@@ -1,8 +1,19 @@
-<%= "Welcome, #{current_user.email}" %>
 <%= link_to 'Recipes', recipe_index_path, class: 'btn small btn-primary' %>
 <%= link_to 'Public Recipes', public_recipes_path, class: 'btn small btn-primary' %>
 <%= link_to 'Food', food_index_path, class: 'btn small btn-primary' %>
 <%= link_to "Shopping", shopping_index_path, class: 'btn btn-primary' %>
+<nav>
+    Welcome, <%= current_user.email %> |
+<%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+
+
+
+
+
+
+
+
+</nav>
 
 <h1 class="text-center mt-3">Foods</h1>
 <main class="container mt-3">
