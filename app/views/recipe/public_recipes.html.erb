@@ -8,8 +8,7 @@
           <li class="list-group-item d-flex justify-content-between align-items-center">
             <div class="recipe">
               <h2><%= recipe.name %></h2>
-              <p>By <%= recipe.user.email %></p>
-
+             <p>By <%= recipe.user.email.split('@').first %></p>
             </div>
             <div class="text-end">
               <p>Total food items: <%= recipe.recipe_foods.length %></p>
