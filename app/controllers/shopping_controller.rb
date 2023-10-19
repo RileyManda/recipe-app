@@ -11,7 +11,7 @@ class ShoppingController < ApplicationController
     total_items = 0
     @recipe_foods.each do |recipe_food|
       calculated_quantity = recipe_food.quantity - recipe_food.food.quantity
-      total_items += calculated_quantity if calculated_quantity > 0
+      total_items += calculated_quantity if calculated_quantity.positive?
     end
     total_items
   end
@@ -20,7 +20,7 @@ class ShoppingController < ApplicationController
     total_value = 0
     @recipe_foods.each do |recipe_food|
       calculated_quantity = recipe_food.quantity - recipe_food.food.quantity
-      total_value += calculated_quantity * recipe_food.food.price if calculated_quantity > 0
+      total_value += calculated_quantity * recipe_food.food.price if calculated_quantity.positive?
     end
     total_value
   end
