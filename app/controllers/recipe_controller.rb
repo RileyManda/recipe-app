@@ -1,6 +1,11 @@
 class RecipeController < ApplicationController
+  load_and_authorize_resource
   def index
-    @recipes = Recipe.all
+    @recipes = if user_signed_in?
+                 Recipe.where(public: true).or(Recipe.where(user_id: current_user.id))
+               else
+                 Recipe.where(public: true)
+               end
   end
 
   def new
@@ -9,10 +14,13 @@ class RecipeController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
+    @recipe.user_id = current_user.id
 
     if @recipe.save
+      puts 'Recipe saved to database'
       redirect_to @recipe, notice: 'Recipe was successfully created.'
     else
+      puts "Failed to save recipe: #{@recipe.errors.full_messages.join(', ')}"
       render :new
     end
   end
