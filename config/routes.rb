@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :recipe_foods, only: [:new, :create, :destroy]
     post '', to: 'recipe#create', on: :new, as: 'create_recipe'
     get 'new_recipe', to: 'recipe#new', on: :new, as: 'new_recipe'
-    get 'shopping', to: 'shopping#index', as: 'shopping_index'
+    get 'shopping', to: 'shopping', as: 'shopping_index'
   end
 
   delete 'recipe/:id', to: 'recipe#destroy', as: 'remove_recipe'
