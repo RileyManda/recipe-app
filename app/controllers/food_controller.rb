@@ -1,4 +1,5 @@
 class FoodController < ApplicationController
+  load_and_authorize_resource
   def new
     @food = Food.new
   end
