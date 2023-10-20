@@ -1,0 +1,24 @@
+<div class= "container">
+<%= form_for @recipe_food, url: recipe_foods_path(recipe_id: @recipe.id), method: :post do |f| %>
+  <%= hidden_field_tag 'recipe_id', @recipe.id %>
+
+  <div class="mb-3">
+    <%= f.label :food_id, class: "form-label" %>
+    <%= f.collection_select(:food_id, Food.all, :id, :name, { prompt: 'Select an ingredient' }, class: "form-control") %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :quantity, class: "form-label" %>
+    <%= f.number_field :quantity, placeholder: 'Quantity', class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :value, class: "form-label" %>
+    <%= f.number_field :value, placeholder: 'Value', class: "form-control" %>
+  </div>
+
+  <div class="text-center">
+    <%= f.submit 'Add Ingredient', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+</div>

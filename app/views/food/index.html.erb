@@ -1,0 +1,43 @@
+  Welcome <%= current_user.email %>
+<h1 class="text-center mt-3">Foods</h1>
+<main class="container mt-3">
+  <div class="card">
+    <div class="card-header">
+      <div class="col-12">
+      <a href="<%= new_food_path %>" class="btn btn-primary mb-3 float-end">Add food</a>
+      </div>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped table-bordered table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>Food</th>
+            <th>Measurement unit</th>
+            <th>Unit price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+ <% if @foods.present? %>
+  <tbody>
+    <% @foods.each do |food| %>
+      <tr>
+        <td><%= food.name %></td>
+        <td><%= food.measurement_unit %></td>
+        <td>&#x20A6; <%= food.price %></td>
+        <% if can? :manage, food %>
+         <td> <%= button_to "Delete", food_path(food), method: :delete, data: { turbo_method: :delete, confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, class: 'btn btn-link' %><td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+<% else %>
+  <p>No foods available.</p>
+<% end %>
+
+
+      </table>
+    </div>
+  </div>
+</main>
