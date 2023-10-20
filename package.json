@@ -16,10 +16,10 @@
     "sass": "^1.69.3"
   },
   "scripts": {
-    "build:scss:compile": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
-    "build:scss:prefix": "postcss ./app/assets/builds/application.bootstrap.scss --use=autoprefixer --output=./app/assets/builds/application.bootstrap.css",
-    "build:scss": "yarn build:scss:compile && yarn build:scss:prefix",
-    "watch:scss": "nodemon --watch ./app/assets/stylesheets/ --ext scss --exec \"yarn build:scss\""
+    "build:css:compile": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
+    "build:css:prefix": "postcss ./app/assets/builds/application.bootstrap.css --use=autoprefixer --output=./app/assets/builds/application.bootstrap.css",
+    "build:css": "yarn build:scss:compile && yarn build:css:prefix",
+    "watch:css": "nodemon --watch ./app/assets/stylesheets/ --ext css --exec \"yarn build:css\""
   },
   "browserslist": [
     "defaults"
