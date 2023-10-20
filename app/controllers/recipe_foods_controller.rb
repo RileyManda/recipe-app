@@ -36,10 +36,10 @@ class RecipeFoodsController < ApplicationController
   end
 
   def generate_shopping_list
-  @total_items = calculate_total_items
-  @total_value = calculate_total_value
+    @total_items = calculate_total_items
+    @total_value = calculate_total_value
 
-  render 'shopping_list'
+    render 'shopping_list'
   end
 
   private
