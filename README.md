@@ -45,20 +45,6 @@ Recipe-App is a web application that allows users to add, update, and delete foo
 
 ### Tech Stack <a name="tech-stack"></a>
 
-<!-- <details>
-  <summary>Client</summary>
-  <ul>
-    <li><a href="https://reactjs.org/">React.js</a></li>
-  </ul>
-</details> -->
-
-<!-- <details>
-  <summary>Server</summary>
-  <ul>
-    <li><a href="https://expressjs.com/">Express.js</a></li>
-  </ul>
-</details> -->
-
 <details>
 <summary>Rails</summary>
   <ul>
@@ -274,7 +260,7 @@ I would like to express my sincere gratitude to [Microverse](https://github.com/
 
 ## 📝 License <a name="license"></a>
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE.txt)
+[MIT License](https://github.com/RileyManda/recipe-app/blob/dev/LICENSE)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
