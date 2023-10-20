@@ -25,6 +25,9 @@ Rails.application.routes.draw do
 
   post 'recipe/:recipe_id/recipe_foods', to: 'recipe_foods#create', as: 'add_ingredient_to_recipe'
   post 'recipe_foods', to: 'recipe_foods#create', as: 'create_recipe_food'
+  post 'shopping/generate_shopping_list/:recipe_id', to: 'recipe_foods#generate_shopping_list', as: 'generate_shopping_list'
+  resources :shopping_list, only: [:index]
+
 
 
 end
