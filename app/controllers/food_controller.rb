@@ -5,7 +5,7 @@ class FoodController < ApplicationController
   end
 
   def index
-    @foods = Food.all
+    @foods = Food.includes(:user, :recipe_foods).all
   end
 
   def create
