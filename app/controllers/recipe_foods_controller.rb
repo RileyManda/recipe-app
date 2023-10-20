@@ -35,6 +35,13 @@ class RecipeFoodsController < ApplicationController
     end
   end
 
+  def generate_shopping_list
+    @total_items = calculate_total_items
+    @total_value = calculate_total_value
+
+    render 'shopping_list'
+  end
+
   private
 
   def set_recipe
@@ -44,4 +51,28 @@ class RecipeFoodsController < ApplicationController
   def recipe_food_params
     params.require(:recipe_food).permit(:food_id, :quantity, :value, :recipe_id)
   end
+end
+
+def calculate_total_items
+  total_items = 0
+
+  if @recipe_foods.present?
+    @recipe_foods.each do |recipe_food|
+      total_items += recipe_food.quantity
+    end
+  end
+
+  total_items
+end
+
+def calculate_total_value
+  total_value = 0
+
+  if @recipe_foods.present?
+    @recipe_foods.each do |recipe_food|
+      total_value += recipe_food.quantity * recipe_food.food.price
+    end
+  end
+
+  total_value
 end
