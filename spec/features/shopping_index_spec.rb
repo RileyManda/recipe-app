@@ -8,8 +8,8 @@ RSpec.feature 'Shopping List Page', type: :feature do
     food = create(:food)
     # Create recipe foods using the recipe_food factory with valid associations
     recipe_foods = [
-      create(:recipe_food, recipe: recipe, food: food, quantity: 100, value: 10),
-      create(:recipe_food, recipe: recipe, food: food, quantity: 200, value: 20),
+      create(:recipe_food, recipe:, food:, quantity: 100, value: 10),
+      create(:recipe_food, recipe:, food:, quantity: 200, value: 20)
     ]
     visit shopping_index_path
     expect(page).to have_content('Shopping List')
