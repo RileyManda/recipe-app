@@ -38,7 +38,7 @@
 
 # 📖 [Recipe-App] <a name="about-project"></a>
 
-Recipe-App is a web application that allows users to add, update, and delete food items, recipes and shopping lists. It is built using Ruby on Rails and PostgreSQL as the database, and it includes comprehensive unit and integration tests implemented with RSpec and Capybara
+Recipe-App is a Rails web application that allows users to add, update, and delete food items, create recipes and generate a shopping list. It is built using Ruby on Rails and PostgreSQL as the database, and it includes comprehensive unit and integration tests implemented with RSpec and Capybara.
 
 
 ## 🛠 Built With <a name="built-with"></a>
@@ -60,12 +60,6 @@ Recipe-App is a web application that allows users to add, update, and delete foo
   </ul>
 </details>
 
-<summary>Database</summary>
-  <ul>
-    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
-  </ul>
-</details>
-
 <details>
 <summary>Postgresql</summary>
   <ul>
@@ -84,6 +78,34 @@ Recipe-App is a web application that allows users to add, update, and delete foo
 <summary>Capybara</summary>
   <ul>
     <li><a href="https://teamcapybara.github.io/capybara/">Capybara-Rails</a></li>
+  </ul>
+</details>
+
+<details>
+<summary>Rails CSS Bundler</summary>
+  <ul>
+    <li><a href="https://github.com/rails/cssbundling-rails">Rails CSS Bundler</a></li>
+  </ul>
+</details>
+
+<details>
+<summary>Cancan</summary>
+  <ul>
+    <li><a href="https://github.com/CanCanCommunity/cancancan">Cancan</a></li>
+  </ul>
+</details>
+
+<details>
+<summary>Devise</summary>
+  <ul>
+    <li><a href="https://github.com/heartcombo/devise">Devise</a></li>
+  </ul>
+</details>
+
+<details>
+<summary>Ruby Pg</summary>
+  <ul>
+    <li><a href="https://github.com/ged/ruby-pg">Ruby Pg</a></li>
   </ul>
 </details>
 
