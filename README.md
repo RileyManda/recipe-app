@@ -109,6 +109,13 @@ Recipe-App is a Rails web application that allows users to add, update, and dele
   </ul>
 </details>
 
+<details>
+<summary>Rubocop</summary>
+  <ul>
+    <li><a href="https://github.com/rubocop/rubocop-rails">Rubocop</a></li>
+  </ul>
+</details>
+
 
 <!-- Features -->
 
