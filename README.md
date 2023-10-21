@@ -116,6 +116,13 @@ Recipe-App is a Rails web application that allows users to add, update, and dele
   </ul>
 </details>
 
+<details>
+<summary>Selenium Web driver</summary>
+  <ul>
+    <li><a href="https://rubygems.org/gems/selenium-webdriver/versions/4.4.0">Selenium Web driver</a></li>
+  </ul>
+</details>
+
 
 <!-- Features -->
 
