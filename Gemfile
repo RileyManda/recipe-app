@@ -5,7 +5,7 @@ ruby '3.2.2'
 gem 'bundler'
 gem 'pg', '~> 1.5', '>= 1.5.4'
 gem 'rails', '~> 7.0.8'
-
+gem 'cssbundling-rails'
 gem 'sprockets-rails'
 
 # Use the Puma web server [https://github.com/puma/puma]
