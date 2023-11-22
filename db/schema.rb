@@ -10,9 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_18_113301) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_23_113612) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.string "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "foods", force: :cascade do |t|
     t.string "name"
@@ -48,6 +55,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_18_113301) do
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.bigint "author_id"
+    t.string "name"
+    t.decimal "amount"
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_transactions_on_author_id"
+    t.index ["category_id"], name: "index_transactions_on_category_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -69,4 +87,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_18_113301) do
   add_foreign_key "recipe_foods", "foods"
   add_foreign_key "recipe_foods", "recipes"
   add_foreign_key "recipes", "users"
+  add_foreign_key "transactions", "categories"
+  add_foreign_key "transactions", "users", column: "author_id"
 end
